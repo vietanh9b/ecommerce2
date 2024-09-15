@@ -1,112 +1,71 @@
-<!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <title>DASHMIN - Bootstrap Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-    <meta charset="utf-8" />
-    <title>@yield('title')</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('themes/admin/assets/images/favicon.ico')}}">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-    @yield('style-libs')
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Layout config Js -->
-    <script src="{{asset('themes/admin/assets/js/layout.js')}}"></script>
-    <!-- Bootstrap Css -->
-    <link href="{{asset('themes/admin/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-    {{asset('themes/admin/')}}
-    <!-- Icons Css -->
-    <link href="{{asset('themes/admin/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="{{asset('themes/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
-    <!-- custom Css-->
-    <link href="{{asset('themes/admin/assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
-    {{-- custom style --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    @yield('style-libs')
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- Libraries Stylesheet -->
+    <link href="{{asset('themes/admin/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{asset('themes/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{asset('themes/admin/css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{asset('themes/admin/css/style.css')}}" rel="stylesheet">
 </head>
+
 <body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        @include('admin.layout.spinner')
+        <!-- Spinner End -->
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
-
-    @include('admin.layout.header')
-
-<!-- removeNotificationModal -->
-    <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                            <h4>Are you sure ?</h4>
-                            <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
-                        </div>
-                    </div>
-                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
-                    </div>
-                </div>
-
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div>
-<!-- /.modal -->
-        <!-- ========== App Menu ========== -->
-
-        <!-- Left Sidebar End -->
+        <!-- Sidebar Start -->
         @include('admin.layout.sidebar')
-        <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="main-content">
+        <!-- Sidebar End -->
 
-            <div class="page-content">
-                <div class="container-fluid">
 
-                    @yield('content')
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            @include('admin.layout.navbar')
+            <!-- Navbar End -->
 
-                </div>
-                <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
+            @yield('content')
 
+
+
+            <!-- Footer Start -->
             @include('admin.layout.footer')
+            <!-- Footer End -->
         </div>
-        <!-- end main content-->
+        <!-- Content End -->
 
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-    <!-- END layout-wrapper -->
 
-
-
-    @include('admin.layout.other')
-    <script>
-        const PATH_ROOT='{{asset('themes/admin')}}';
-    </script>
-    <!-- JAVASCRIPT -->
-    <script src="{{asset('themes/admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('themes/admin/assets/libs/simplebar/simplebar.min.js')}}"></script>
-    <script src="{{asset('themes/admin/assets/libs/node-waves/waves.min.js')}}"></script>
-    <script src="{{asset('themes/admin/assets/libs/feather-icons/feather.min.js')}}"></script>
-    <script src="{{asset('themes/admin/assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
-    <script src="{{asset('themes/admin/assets/js/plugins.js')}}"></script>
-
-    @yield('script-libs')
-
-    <!-- App js -->
-    <script src="{{asset('themes/admin/assets/js/app.js')}}"></script>
-    {{-- custom script --}}
-    @yield('script')
+    <!-- JavaScript Libraries -->
+    @include('admin.layout.script')
 </body>
+
 </html>

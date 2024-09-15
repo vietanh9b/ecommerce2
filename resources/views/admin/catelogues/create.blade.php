@@ -4,8 +4,6 @@
 @endsection
 @section('content')
 
-
-
 <div class="card mt-5">
     <div class="card-header">
         <div class="row">
