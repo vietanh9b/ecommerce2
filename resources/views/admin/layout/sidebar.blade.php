@@ -17,6 +17,14 @@
             {{--  active nó sẽ sáng ở phần sidebar --}}
             <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-product-hunt me-2"></i></i>Catelogue</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="{{route('admin.catelogues.index')}}" class="dropdown-item">List Catelogue</a>
+                    <a href="{{route('admin.catelogues.create')}}" class="dropdown-item">Add Catelogue</a>
+                    <a href="element.html" class="dropdown-item">List trash Catelogue</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-product-hunt me-2"></i></i>Product</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="{{route('admin.products.index')}}" class="dropdown-item">List product</a>

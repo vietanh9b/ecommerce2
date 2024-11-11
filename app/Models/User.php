@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -13,35 +12,33 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_TYPE_ADMIN = 'admin';
+    const ROLE_TYPE_USER = 'user';
+    const ROLE = [
+        self::ROLE_TYPE_ADMIN => 'Admin',
+        self::ROLE_TYPE_USER => 'User'
+    ];
+    const GENDER_MALE = 'Male';
+    const GENDER_FEMALE = 'Female';
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-
-     public function role(): BelongsTo
-     {
-         return $this->belongsTo(Role::class);
-     }
- 
-    //  public function isAdmin(): bool
-    //  {
-    //      // Giả sử role 'admin' có ID là 1
-    //      return $this->role_id === 1;
-    //      // Hoặc kiểm tra theo tên vai trò:
-    //      // return $this->role->name === 'admin';
-    //  }
-     public function isAdmin(): bool
-     {
-         return $this->role->name === 'admin';
-     }
-
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role_id',
+        'role',
+        'photo',
+        'status',
+        'fcm_token',
+        'user_id'
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -60,6 +57,25 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
+    public function getAddress()
+    {
+        return $this->hasMany('App\Models\CustomerAddress', 'user_id', 'id')
+            ->orderBy('is_default', 'DESC')
+            ->get();
+    }
+
+    public function getAddressDefault()
+    {
+        $defaultAddress = $this->hasOne('App\Models\CustomerAddress', 'user_id', 'id')
+            ->where('is_default', CustomerAddress::DEFAULT)
+            ->first();
+        if (!$defaultAddress) {
+            $defaultAddress = $this->getAddress()->first();
+        }
+
+        return $defaultAddress;
+    }
+
 }

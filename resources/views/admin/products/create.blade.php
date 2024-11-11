@@ -8,7 +8,7 @@
     <div class="card-header">
         <div class="row">
             <div class="col-md-6">
-                <h4>Add product</h4>                    
+                <h4>Add product</h4>
             </div>
             <div class="col-md-6 d-flex justify-content-end">
                 <button class="btn btn-success">Trash</button>
@@ -50,24 +50,22 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" value="{{old('name')}}">
                     </div>
                     <div class="form-group">
                         <label for="" class="form-label">Sku</label>
-                        <input type="text" name="sku" class="form-control">
+                        <input type="text" name="sku" class="form-control" value="{{old('sku')}}">
                     </div>
                     <div class="form-group">
                         <label for="" class="form-label">Catelogue</label>
-                        <select class="form-select mb-3" aria-label="Default select example" name="catelogue_id">
+                        <select class="form-select mb-3" aria-label="Default select example" name="catelogue">
+                            <option value="">Chọn danh mục</option>
                             @foreach ($catelogues as $catelogue)
                                 <option value="{{$catelogue->id}}">{{$catelogue->name}}</option>
                             @endforeach
-                            {{-- <option selected value="1">One</option>
-                            <option value="2">Two</option>  
-                            <option value="3">Three</option> --}}
                         </select>
                     </div>
-                    
+
                     {{-- price --}}
                     <div class="form-group">
                         <label for="" class="form-label">Price regular</label>
@@ -128,7 +126,7 @@
                                 <option value="{{ $color->id }}" style="color: {{ $color->name }}">{{ $color->name }}</option>
                             @endforeach
                         </select>
-        
+
                         <label for="size">Size:</label>
                         <select name="sizes[]">
                             @foreach($sizes as $size)
@@ -138,7 +136,7 @@
                         <label>
                             Image variant
                         </label>
-                        <input type="file" name="image_variant[]" id="">  
+                        <input type="file" name="image_variant[]" id="">
                     </div>
                 </div>
             <button type="submit" class="mt-4 btn btn-primary">Submit</button>
@@ -147,8 +145,8 @@
 </div>
 @endsection
 @section('script-libs')
-    <script src="{{asset('themes/admin/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
-    <script src="{{asset('themes/admin/assets/js/pages/form-editor.init.js')}}"></script>
+    <script src="{{asset('themes/admin/lib/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+    <script src="{{asset('themes/admin/js/form-editor.init.js')}}"></script>
 @endsection
 @section('script')
 <script>
@@ -162,7 +160,7 @@
                             <option value="{{ $color->id }}" style="color: {{ $color->name }}">{{ $color->name }}</option>
                         @endforeach
                     </select>
-    
+
                     <label for="size">Size:</label>
                     <select name="sizes[]">
                         @foreach($sizes as $size)
@@ -172,12 +170,10 @@
                     <label>
                     Image variant
                     </label>
-                    <input type="file" name="image_variant" id="">  
+                    <input type="file" name="image_variant" id="">
                 </div>`;
             $('#variants').append(variantHtml);
         });
-    
-
     });
 
 </script>

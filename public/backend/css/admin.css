@@ -1,0 +1,82 @@
+.card .card-tabs {
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.card .card-tabs .tab-header:first-child {
+  border-radius: calc(0.35rem - 1px) calc(0.35rem - 1px) 0 0;
+}
+
+.card .card-tabs .tab-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.card .card-tabs .tab-header.active {
+  font-weight: bold;
+}
+
+.modal-body .is_default {
+  display: flex;
+  white-space: nowrap;
+  justify-content: flex-start;
+  flex-direction: row;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  align-items: center;
+}
+
+.modal-body .is_default input {
+  width: 20px;
+  height: 20px;
+}
+
+h2 small {
+  display: inline-block;
+  font-size: 0.5em;
+  padding-left: 0.25em;
+}
+
+small#datatable_info_stack {
+  font-size: 0.5em;
+  font-weight: 400;
+}
+
+#datatable_search_stack {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#crudTable_wrapper #crudTable_paginate {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#crudTable_wrapper select[name=crudTable_length] {
+  width: auto;
+  min-width: 3.6rem;
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+
+#saveActions {
+  margin-top: 1.5rem;
+}
+
+#saveActions a.btn {
+  color: #495057;
+  background-color: #becde4;
+  border-color: #b5c7e0;
+}
+
+#noty_layout__topRight {
+  background-color: #1cc88a;
+  color: #FFF;
+  padding: 8px !important;
+}
+
+.wgt-export-csv {
+  margin-bottom: 20px;
+}
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Catelogue;
 use App\Models\Product;
 use App\Models\ProductColor;
@@ -45,18 +46,9 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
 {
     // dd($request);
-        $dataProduct=$request->validate([
-        'name' => 'required',
-        'sku' => 'required',
-        // 'catelogue' => 'required',
-        'price_regular' => 'required',
-        'price_sale' => 'required',
-        // 'sizes'=>'required',
-        // 'color'=>'required'
-    ]);
     $dataProduct = $request->except(['cover', 'sizes', 'colors']);
     $sizes = $request->sizes;
     $colors = $request->colors;
@@ -64,12 +56,9 @@ class ProductController extends Controller
     $dataProduct['is_hot_deal'] = isset($dataProduct['is_hot_deal']) ? 1 : 0;
     $dataProduct['is_good_deal'] = isset($dataProduct['is_good_deal']) ? 1 : 0;
     $dataProduct['is_show_home'] = isset($dataProduct['is_show_home']) ? 1 : 0;
+    $dataProduct['slug'] = $dataProduct['name'] . '-' . $dataProduct['sku'];
 
-    // $dataProduct['is_active'] ??= 0;
-    // $dataProduct['is_hot_deal'] ??= 0;
-    // $dataProduct['is_good_deal'] ??= 0;
-    // $dataProduct['is_show_home'] ??= 0;
-    $dataProduct['slug'] = Str::slug($dataProduct['name']) . '-' . $dataProduct['sku'];
+    dd($dataProduct);
     $existingVariants = [];
     $error_test = false;
     

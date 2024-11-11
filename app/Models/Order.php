@@ -7,60 +7,56 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
-    const STATUS_ORDER=[
-        'pending'=>'Chờ xác nhận',
-        'confirmed'=>'Đã xác nhận',
-        'preparing_goods'=>'Đang chuẩn bị hàng',
-        'shipping'=>'Đang giao hàng',
-        'delivered'=>'Đã giao hàng',
-        'canceled'=>'Đơn hàng đã bị hủy',
-    ];
-    const STATUS_PAYMENT = [
-        'unpaid' => 'Chưa thanh toán',
-        'paid' => 'Đã thanh toán',
+    const STATUS_NEW = 'new';
+    const STATUS_PROCESS = 'process';
+    const STATUS_DELIVERY = 'delivered';
+    const STATUS_CANCEL = 'cancel';
+    const ORDER_RECEIPT = 1;
+
+    const LIST_ORDER_STATUS = [
+        self::STATUS_NEW,
+        self::STATUS_PROCESS,
+        self::STATUS_DELIVERY,
+        self::STATUS_CANCEL
     ];
 
-    const STATUS_ORDER_PENDING = 'pending';
-    const STATUS_ORDER_CONFIRMED = 'confirmed';
-    const STATUS_ORDER_PREPARING_GOODS = 'preparing_goods';
-    const STATUS_ORDER_SHIPPING = 'shipping';
-    const STATUS_ORDER_DELIVERED = 'delivered';
-    const STATUS_ORDER_CANCELED = 'canceled';
-    const STATUS_PAYMENT_UNPAID = 'unpaid';
-    const STATUS_PAYMENT_PAID = 'paid';
 
     protected $fillable = [
         'user_id',
-        'user_name',
-        'user_email',
-        'user_phone',
-        'user_address',
-        'user_note',
-        'is_ship_user_same_user',
-        'ship_user_name',
-        'ship_user_email',
-        'ship_user_phone',
-        'ship_user_address',
-        'ship_user_note',
-        'status_order',
-        'status_payment',
-        'total_price',
-        'coupon_id'
+        'order_number',
+        'sub_total',
+        'quantity',
+        'status',
+        'total_amount',
+        'name',
+        'detail_address',
+        'phone',
+        'email',
+        'payment_method',
+        'payment_status',
+        'gender',
+        'remark',
+        'delivery_date'
     ];
 
-    public function getTotalAmountAfterCoupon()
+
+    public function user()
     {
-        $total = $this->total_amount;
-
-        if ($this->discount && $this->discount->isValid()) {
-            if ($this->discount->type == 'percent') {
-                $total -= $total * ($this->discount->amount / 100);
-            } elseif ($this->discount->type == 'fixed') {
-                $total -= $this->discount->amount;
-            }
-        }
-
-        return max($total, 0); // Đảm bảo giá không âm
+        return $this->belongsTo('App\User', 'user_id');
     }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function cart_info()
+    {
+            return $this->hasMany('App\Models\Cart', 'order_id', 'id');
+    }
+
+    public function getOrderListByUser($user_id){
+        return $this->where('user_id', $user_id)->orderBy('id', 'DESC')->get();
+    }
+
 }

@@ -1,0 +1,40 @@
+[19396] Log opened at 2023-04-10 09:10:13.851434
+[19396] [Step Debug] INFO: Connecting to configured address/port: 127.0.0.1:52370.
+[19396] [Step Debug] INFO: Connected to debugging client: 127.0.0.1:52370 (through xdebug.client_host/xdebug.client_port).
+[19396] [Step Debug] -> <init xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" fileuri="file:///C:/xampp/htdocs/www/html/laravel-Ecommerce/app/Http/Controllers/HomeController.php" language="PHP" xdebug:language_version="8.2.0" protocol_version="1.0" appid="19396" idekey="VSCODE"><engine version="3.2.1"><![CDATA[Xdebug]]></engine><author><![CDATA[Derick Rethans]]></author><url><![CDATA[https://xdebug.org]]></url><copyright><![CDATA[Copyright (c) 2002-2023 by Derick Rethans]]></copyright></init>
+
+[19396] [Step Debug] <- feature_set -i 1 -n resolved_breakpoints -v 1
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="1" feature="resolved_breakpoints" success="1"></response>
+
+[19396] [Step Debug] <- feature_set -i 2 -n notify_ok -v 1
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="2" feature="notify_ok" success="1"></response>
+
+[19396] [Step Debug] <- feature_set -i 3 -n extended_properties -v 1
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="3" feature="extended_properties" success="1"></response>
+
+[19396] [Step Debug] <- feature_set -i 4 -n breakpoint_include_return_value -v 1
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="4" feature="breakpoint_include_return_value" success="1"></response>
+
+[19396] [Step Debug] <- feature_set -i 5 -n max_children -v 100
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="feature_set" transaction_id="5" feature="max_children" success="1"></response>
+
+[19396] [Step Debug] <- breakpoint_set -i 6 -t line -f file:///c:/xampp/htdocs/www/html/laravel-Ecommerce/app/Http/Controllers/HomeController.php -n 26
+[19396] [Step Debug] -> <notify xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" name="breakpoint_resolved"><breakpoint type="line" resolved="resolved" filename="file:///C:/xampp/htdocs/www/html/laravel-Ecommerce/app/Http/Controllers/HomeController.php" lineno="26" state="enabled" hit_count="0" hit_value="0" id="193960001"></breakpoint></notify>
+
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_set" transaction_id="6" id="193960001" resolved="resolved"></response>
+
+[19396] [Step Debug] <- breakpoint_get -i 7 -d 193960001
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="breakpoint_get" transaction_id="7"><breakpoint type="line" resolved="resolved" filename="file:///C:/xampp/htdocs/www/html/laravel-Ecommerce/app/Http/Controllers/HomeController.php" lineno="26" state="enabled" hit_count="0" hit_value="0" id="193960001"></breakpoint></response>
+
+[19396] [Step Debug] <- run -i 8
+[19396] [Step Debug] -> <notify xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" name="error"><xdebug:message filename="file:///C:/xampp/htdocs/www/html/laravel-Ecommerce/app/Http/Controllers/HomeController.php" lineno="7" type="Fatal error"><![CDATA[Uncaught Error: Class "App\Http\Controllers\Controller" not found]]></xdebug:message></notify>
+
+[19396] [Step Debug] -> <notify xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" name="error"><xdebug:message filename="file:///C:/xampp/htdocs/www/html/laravel-Ecommerce/app/Http/Controllers/HomeController.php" lineno="7" type="Fatal error"><![CDATA[Uncaught Error: Class "App\Http\Controllers\Controller" not found]]></xdebug:message></notify>
+
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="run" transaction_id="8" status="stopping" reason="ok"></response>
+
+[19396] [Step Debug] <- stop -i 9
+[19396] [Step Debug] -> <response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug" command="stop" transaction_id="9" status="stopped" reason="ok"></response>
+
+[19396] Log closed at 2023-04-10 09:10:13.899743
+
