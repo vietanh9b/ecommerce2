@@ -74,6 +74,5 @@ class CouponController extends Controller
         $coupon->delete();
 
         return redirect()->route('admin.coupons.index')->with('success', 'Coupon updated successfully.');
-
     }
 }

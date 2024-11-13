@@ -45,12 +45,12 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
             @csrf
                 @foreach(Helper::getAllProductFromCart() as $key=>$cart)
                   <div class="cart-item border-top border-bottom ">
-                    <div class="row align-items-center"> 
+                    <div class="row align-items-center">
                       <div class="col-lg-5 col-md-4">
                         <div class="cart-info d-flex flex-wrap align-items-center mb-4">
                           <div class="col-lg-5">
                             <div class="card-image">
-                      <img src="{{$cart->product_attr['photo']}}" alt="cloth" class="img-fluid">
+                      <img src="{{$cart->product_attr['photo']}}" alt="product" class="img-fluid">
                     </div>
                   </div>
                   <div class="col-lg-4">
@@ -62,7 +62,7 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
                              $productPrice =  $productHelper->formatPrice($cart->product_attr->price);
                         @endphp
                                 <a href="">{{$productName}}</a>
-                              </h3> 
+                              </h3>
                               <div class="card-price">
                         <span class="money text-primary">{{$productPrice}}</span>
                       </div>
@@ -87,8 +87,8 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
                             <div class="total-price">
                               <span class="money text-primary">{{$cart['amount']}} </span>
                             </div>
-                          </div>   
-                        </div>             
+                          </div>
+                        </div>
                       </div>
 
                       <div class="col-lg-1 col-md-1" style="padding-left: 35px;">
@@ -104,7 +104,7 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
                   </div>
                 @endforeach
           <div class="cart-totals bg-grey padding-medium">
-            
+
             <div class="button-wrap">
               <button type="submit" class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none">Update Cart</button>
               {{-- <button class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none"><a href="{{route('home')}}"> Continue Shopping</a></button> --}}
@@ -112,7 +112,7 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
 
             </div>
           </div>
-        </form> 
+        </form>
         </div>
 
 
@@ -120,17 +120,17 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
         <div class="cart-checkout col-lg-4" style="padding-left: 20px;" >
           <div class="cart-totals bg-grey padding-medium" style="padding-top: 0em; padding-bottom:0em;">
             <h4 class="display-7 text-uppercase text-dark pb-4" style="margin-bottom: 8px;" >CHECK OUT YOUR ORDER</h4>
-            
-            
-            
+
+
+
             <form class="form" method="POST" action="{{route('cart.order')}}">
               @csrf
               <div class="cart-totals bg-grey ">
-   
+
                 <div class="total-price ">
                   <table cellspacing="0" class="table text-uppercase">
                     <tbody>
-                      
+
                       <tr class="order-total pt-2 pb-2 border-bottom">
                         <th>Total:</th>
                         <td data-title="Sub total">
@@ -200,9 +200,9 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
 
                 </div>
               </div>
-            
+
               <button class="btn btn-black btn-medium text-uppercase me-2 mb-3 btn-rounded-none" type="submit">Confirm Order</button>
-              
+
             </form>
           </div>
           </div>
@@ -210,7 +210,7 @@ $addressDefault = $user->getAddressDefault() ?? $listAddress->first();
 
       </div>
     </div>
-  </section> 
+  </section>
 
     {{-- thiếu dòng @endsection cho section maincontent sẽ bị mất head --}}
-@endsection 
+@endsection
